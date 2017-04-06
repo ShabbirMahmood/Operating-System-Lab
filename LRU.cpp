@@ -85,6 +85,7 @@ int main()
         }
 
         // Displaying
+        printf("\t"); // Better Look
         for(int j=0; j<no_of_frames; j++)
         {
             if(frame[j]==-1)
