@@ -61,16 +61,16 @@ int main()
         if(flag2==0)
         {
            flag3 = 0;
-           for(int j=0; j<no_of_frames; j++)
+           for(int j=0; j<no_of_frames; j++) // Calculating the reference vector of each frame in the physical memory
            {
-                referencee[j] = -1;
+                referencee[j] = -1;           // All frames are empty(-1)Initially
 
-               for(int k=i+1; k<no_of_pages; k++)
+               for(int k=i+1; k<no_of_pages; k++)  // Checking the reference value of each page(in each frames) residing in the memory
                {
-                   if(frame[j] == page[k])
+                   if(frame[j] == page[k]) // If the page is referenced then update the position of the page in the reference vector
                    {
                        referencee[j] = k;
-                       break;
+                       break; //**********
 
                    }
                }
@@ -78,14 +78,14 @@ int main()
 
            for(int j=0; j<no_of_frames; j++)
            {
-               if(referencee[j] == -1)
+               if(referencee[j] == -1)   // *If the page is not referenced further in the string then replace it for the new page
                {
                    position = j;
                    flag3 = 1;
                    break;
                }
            }
-           if(flag3 == 0) //*********
+           if(flag3 == 0) //* If all the pages in the frames are referenced then find the maximum value of the reference vector for replacement
            {
                maxx = referencee[0];
                position = 0;
@@ -98,12 +98,12 @@ int main()
                    }
                }
            }
-           frame[position] = page[i];
+           frame[position] = page[i]; // Assign the new page after replacement
            fault++;
         }
 
         // Displaying
-        printf("\t"); // Better Look
+        printf("\t");
         for(int j=0; j<no_of_frames; j++)
         {
             if(frame[j]==-1)
@@ -124,3 +124,4 @@ int main()
 
     return 0;
 }
+
